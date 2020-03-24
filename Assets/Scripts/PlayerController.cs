@@ -6,6 +6,7 @@ using System;
 public class PlayerController : Controller
 {
     public event Action FirstInputEvent;
+    public event Action PlayerDeathEvent;
     
     public GameObject PlayerObject;
 
@@ -37,21 +38,40 @@ public class PlayerController : Controller
         }
     }
 
-    public override void SetControllerState(GameState p_state){
-        switch(p_state){
-            case GameState.play :
-            case GameState.pause :{
-                _shouldTakeInput = true;
+    public override void SetControllerState(GameState p_state)
+    {
+        switch (p_state)
+        {
+            case GameState.play:
+            case GameState.pause:
+                {
+                    _shouldTakeInput = true;
+                    _firsInput = false;
+                    break;
+                }
+            case GameState.gameOver:{
+                _shouldTakeInput = false;
                 _firsInput = false;
                 break;
             }
         }
     }
 
-    public override void Init(){
+    public override void Init()
+    {
         _shouldTakeInput = false;
         _firsInput = false;
 
         _playerRb = PlayerObject.GetComponent<Rigidbody>();
+
+        PlayerObject.GetComponent<CollisionCheck>().CollisionEvent += PlayerDeath;
+    }
+
+    private void PlayerDeath(){
+        Debug.Log("Did you ever hear the tragedy of Darth Plagueis the Wise?");
+
+        if(PlayerDeathEvent != null){
+            PlayerDeathEvent.Invoke();
+        }
     }
 }

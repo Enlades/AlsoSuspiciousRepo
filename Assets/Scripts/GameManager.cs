@@ -11,8 +11,15 @@ public class GameManager : MonoBehaviour
         {
             c.Init();
 
-            if(c is PlayerController){
+            if (c is PlayerController)
+            {
                 ((PlayerController)c).FirstInputEvent += StartGame;
+                ((PlayerController)c).PlayerDeathEvent += GameOver;
+            }
+
+            if (c is ProgressController)
+            {
+                ((ProgressController)c).ProgressUpdateEvent += UpdateProgress;
             }
         }
 
@@ -29,5 +36,19 @@ public class GameManager : MonoBehaviour
         {
             c.SetControllerState(p_state);
         }
+    }
+
+    private void UpdateProgress(float p_progress){
+        foreach (Controller c in Controllers)
+        {
+            if (c is UIController)
+            {
+                ((UIController)c).SetProgress(p_progress);
+            }
+        }
+    }
+
+    private void GameOver(){
+        SetGameState(GameState.gameOver);
     }
 }

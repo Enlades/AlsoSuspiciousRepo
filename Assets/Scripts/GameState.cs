@@ -2,5 +2,6 @@
     debug,
     play,
     pause,
-    stop
+    stop,
+    gameOver
 }

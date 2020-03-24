@@ -11,8 +11,6 @@ public class CollisionCheck : MonoBehaviour
 
     private void OnCollisionEnter(Collision col){
         if(col.collider.CompareTag(TargetTag)){
-            Debug.Log("Did you ever hear the tragedy of Darth Plagueis the Wise?");
-
             if(CollisionEvent != null){
                 CollisionEvent.Invoke();
             }
