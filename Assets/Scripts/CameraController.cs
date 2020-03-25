@@ -32,7 +32,7 @@ public class CameraController : Controller
         }
     }
 
-    public override void Init(){
+    public override void Init(int p_levelIndex){
         _shouldMove = false;
     }
 }

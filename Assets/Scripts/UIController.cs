@@ -38,12 +38,16 @@ public class UIController : Controller
         }
     }
 
-    public override void Init()
+    public override void Init(int p_levelIndex)
     {
         SetProgress(0f);
-        SetLevel(1);
+        SetLevel(p_levelIndex + 1);
 
         RestartButton.onClick.AddListener(()=>{RestartLevel();});
+    }
+
+    public override void EvaluateProgress(float p_progress){
+        SetProgress(p_progress);
     }
 
     public void SetLevel(int p_currentLevel){
@@ -51,7 +55,7 @@ public class UIController : Controller
         NextLevelText.text = (p_currentLevel + 1).ToString();
     }
 
-    public void SetProgress(float p_amount){
+    private void SetProgress(float p_amount){
         ProgressBarFill.fillAmount = p_amount;
     }
 

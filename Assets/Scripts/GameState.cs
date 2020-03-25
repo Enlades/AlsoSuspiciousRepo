@@ -3,5 +3,6 @@
     play,
     pause,
     stop,
-    gameOver
+    gameOver,
+    win
 }

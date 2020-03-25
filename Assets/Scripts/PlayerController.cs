@@ -7,6 +7,7 @@ public class PlayerController : Controller
 {
     public event Action FirstInputEvent;
     public event Action PlayerDeathEvent;
+    public event Action<Vector3> PlayerPositionEvent;
     
     public GameObject PlayerObject;
 
@@ -34,6 +35,10 @@ public class PlayerController : Controller
 
             if(Physics.Raycast(ray, out hit, float.MaxValue, LayerMask.GetMask("Ground"))){
                 _playerRb.MovePosition(hit.point + Vector3.up * 0.5f);
+
+                if(PlayerPositionEvent != null){
+                    PlayerPositionEvent.Invoke(PlayerObject.transform.position);
+                }
             }
         }
     }
@@ -57,7 +62,7 @@ public class PlayerController : Controller
         }
     }
 
-    public override void Init()
+    public override void Init(int p_levelIndex)
     {
         _shouldTakeInput = false;
         _firsInput = false;
@@ -65,6 +70,13 @@ public class PlayerController : Controller
         _playerRb = PlayerObject.GetComponent<Rigidbody>();
 
         PlayerObject.GetComponent<CollisionCheck>().CollisionEvent += PlayerDeath;
+    }
+
+    public override void HandleEvents(params Delegate[] p_delegates)
+    {
+        FirstInputEvent += (Action)p_delegates[0];
+        PlayerDeathEvent += (Action)p_delegates[1];
+        PlayerPositionEvent += (Action<Vector3>)p_delegates[3];
     }
 
     private void PlayerDeath(){
