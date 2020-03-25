@@ -203,7 +203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1544092060
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1931,7 +1931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e6a25e94f402184388d2a18d59c3c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 3
+  MoveSpeed: 0.09
 --- !u!1 &1609064440662703930
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,7 +2264,7 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
-    m_Resolution: 3
+    m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.088
@@ -2385,6 +2385,7 @@ MonoBehaviour:
   NextLevelText: {fileID: 1609064439931810615}
   ProgressBarFill: {fileID: 1609064439210384481}
   RestartPanel: {fileID: 1677295031}
+  TouchHand: {fileID: 1544092059}
   RestartButton: {fileID: 1794778821}
 --- !u!1 &1609064441089688947
 GameObject:

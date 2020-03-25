@@ -60,3 +60,7 @@ crashlytics-build.properties
 
 # VSCODE
 .vscode/
+
+# Blender backup
+*.blend1
+*.blend1.meta

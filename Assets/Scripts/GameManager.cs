@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public List<Controller> Controllers;
 
     private void Awake(){
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = -1;
+
         foreach (Controller c in Controllers)
         {
             c.Init(SceneManager.GetActiveScene().buildIndex);

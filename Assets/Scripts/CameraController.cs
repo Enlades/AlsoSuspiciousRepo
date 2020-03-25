@@ -13,7 +13,7 @@ public class CameraController : Controller
             return;
         }
 
-        transform.Translate(Vector3.forward * MoveSpeed * Time.deltaTime, Space.World);
+        transform.Translate(Vector3.forward * MoveSpeed, Space.World);
     }
 
     public override void SetControllerState(GameState p_state){
