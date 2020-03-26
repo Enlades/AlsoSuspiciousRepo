@@ -820,7 +820,7 @@ GameObject:
   - component: {fileID: 1609064439013405541}
   - component: {fileID: 1609064439013405540}
   - component: {fileID: 1609064439013405543}
-  - component: {fileID: 1609064439013405542}
+  - component: {fileID: 8990230245849242370}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -888,8 +888,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1609064439013405542
-MeshCollider:
+--- !u!65 &8990230245849242370
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -898,10 +898,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  serializedVersion: 2
+  m_Size: {x: 9.999999, y: 2.220446e-16, z: 10.000001}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1609064439021074689
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,7 +1094,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1609064439045880549}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -1103,7 +1102,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3293aba14c304664ea8c3711edf95a2a, type: 2}
+  - {fileID: 2100000, guid: 8578853d5717721419a3e6a8aae8f7ea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
