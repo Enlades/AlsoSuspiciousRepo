@@ -9,7 +9,7 @@ public class LevelDesigner : EditorWindow
     private Object _targetPosition;
     private float _offset;
     private Vector3 _size;
-    private int _amount;
+    private Vector2Int _amount;
 
     private bool _isDiagonal;
     private GameObject _currentParent; 
@@ -29,7 +29,7 @@ public class LevelDesigner : EditorWindow
         _targetPosition = EditorGUILayout.ObjectField("Target Position : ", _targetPosition, typeof(Transform), true);
         _offset = EditorGUILayout.Slider("Offset : ", _offset, 1f, 2f);
         _size = EditorGUILayout.Vector3Field("Size : ", _size);
-        _amount = EditorGUILayout.IntSlider("Amount : ", _amount, 1, 50);
+        _amount = EditorGUILayout.Vector2IntField("Amount : ", _amount);
         _isDiagonal = EditorGUILayout.Toggle("Diagonal : ", _isDiagonal);
 
         if (GUILayout.Button("Generate") && _targetPosition != null && _targetObject != null)
@@ -38,12 +38,12 @@ public class LevelDesigner : EditorWindow
             Vector3 centerPosition = Vector3.zero;
             int generatedCount = 0;
 
-            for(int i = 0; i < _amount; i++){
-                for(int j = 0; j < _amount - (_isDiagonal == true ? i : 0); j++){
+            for(int i = 0; i < _amount.x; i++){
+                for(int j = 0; j < _amount.y - (_isDiagonal == true ? i : 0); j++){
                     GameObject temp = (GameObject)PrefabUtility.InstantiatePrefab((GameObject)_targetObject);
                     temp.transform.localScale = _size;
 
-                    temp.transform.position = ((Transform)_targetPosition).position + Vector3.left * _amount / 2 + Vector3.back * _amount / 2
+                    temp.transform.position = ((Transform)_targetPosition).position + Vector3.left * _amount.x / 2 + Vector3.back * _amount.y / 2
                     + Vector3.forward * i * _offset * temp.transform.localScale.z + Vector3.right * j * _offset * temp.transform.localScale.x;
 
                     temp.transform.SetParent((Transform)_targetPosition);
