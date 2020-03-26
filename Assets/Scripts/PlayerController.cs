@@ -59,6 +59,11 @@ public class PlayerController : Controller
                 _firsInput = false;
                 break;
             }
+            case GameState.win:{
+                _shouldTakeInput = false;
+                _firsInput = false;
+                break;
+            }
         }
     }
 

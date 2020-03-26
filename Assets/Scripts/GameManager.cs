@@ -68,10 +68,23 @@ public class GameManager : MonoBehaviour
     private void LoadNextLevel(){
         int currentLevelBuildIndex = SceneManager.GetActiveScene().buildIndex;
 
-        if(currentLevelBuildIndex < SceneManager.sceneCountInBuildSettings - 1){
-            SceneManager.LoadScene(currentLevelBuildIndex + 1);
-        }else{
-            SceneManager.LoadScene(currentLevelBuildIndex);
+        StartCoroutine(DelayedAction(1f, ()=>{
+            if (currentLevelBuildIndex < SceneManager.sceneCountInBuildSettings - 1)
+            {
+                SceneManager.LoadScene(currentLevelBuildIndex + 1);
+            }
+            else
+            {
+                SceneManager.LoadScene(currentLevelBuildIndex);
+            }
+        }));
+    }
+
+    private IEnumerator DelayedAction(float p_waitTime, Action p_callback){
+        yield return new WaitForSeconds(p_waitTime);
+
+        if(p_callback != null){
+            p_callback.Invoke();
         }
     }
 }
