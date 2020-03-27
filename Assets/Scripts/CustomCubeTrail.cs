@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Don't judge the Pool class
 public class CustomCubeTrail : MonoBehaviour
 {
     public GameObject TrailPrefab;
+
+    private Coroutine _trailCoroutine;
 
     private Pool _pool;
 
@@ -13,7 +16,11 @@ public class CustomCubeTrail : MonoBehaviour
     }
     
     public void StartTrail(){
-        StartCoroutine(CreateTrail());
+        _trailCoroutine = StartCoroutine(CreateTrail());
+    }
+
+    public void StopTrail(){
+        StopCoroutine(_trailCoroutine);
     }
 
     private IEnumerator CreateTrail(){

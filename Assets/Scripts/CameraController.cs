@@ -27,6 +27,7 @@ public class CameraController : Controller
             }
             case GameState.gameIsGoingToBeOver:{
                 MoveSpeed /= 2f;
+                StartCoroutine(CameraShake());
                 break;
             }
             case GameState.pause:{
@@ -38,5 +39,27 @@ public class CameraController : Controller
 
     public override void Init(int p_levelIndex){
         _shouldMove = false;
+    }
+
+    private IEnumerator CameraShake(){
+        
+        float timer = 0.2f;
+        float maxTimer = timer;
+        float magnitude = 0.2f;
+
+        Vector3 startPosition = transform.position;
+
+        while(timer > 0){
+
+            transform.Translate(Random.Range(-1f, 1f) * magnitude, Random.Range(-1f, 1f)* magnitude, Random.Range(-1f, 1f)* magnitude);
+
+            timer -= Time.deltaTime;
+
+            yield return new WaitForFixedUpdate();
+
+            yield return null;
+        }
+
+        transform.position = startPosition;
     }
 }

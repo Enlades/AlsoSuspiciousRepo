@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 1544092060}
   - component: {fileID: 1544092062}
   - component: {fileID: 1544092061}
+  - component: {fileID: 61527025}
   m_Layer: 5
   m_Name: ToucHand
   m_TagString: Untagged
@@ -259,6 +260,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &61527025
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544092059}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a940bea0b3289ea408a108feacb9b247, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1605221893
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,11 +431,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.63529414}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1057,6 +1077,7 @@ GameObject:
   - component: {fileID: 1609064439045880478}
   - component: {fileID: 1609064439045880479}
   - component: {fileID: 8302668275645150551}
+  - component: {fileID: 1517790051}
   m_Layer: 0
   m_Name: PlayerSphere
   m_TagString: Untagged
@@ -1179,6 +1200,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TrailPrefab: {fileID: 5178655514935580769, guid: adda92a809183ef458e1a0822e27caef,
+    type: 3}
+--- !u!114 &1517790051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609064439045880549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30485013ca331da4ca267e6abe9990df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExplosionPiecePrefab: {fileID: 8661476613949739584, guid: b8e43446f4f0b654289654746818fb5c,
     type: 3}
 --- !u!1 &1609064439191749778
 GameObject:

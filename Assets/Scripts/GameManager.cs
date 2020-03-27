@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
     private void GameOver(){
         SetGameState(GameState.gameIsGoingToBeOver);
 
-        StartCoroutine(DelayedAction(1f, () =>
+        StartCoroutine(DelayedAction(0.5f, () =>
         {
             SetGameState(GameState.gameOver);
         }));

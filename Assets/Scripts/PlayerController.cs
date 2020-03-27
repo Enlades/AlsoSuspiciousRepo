@@ -65,6 +65,11 @@ public class PlayerController : Controller
             case GameState.gameIsGoingToBeOver:{
                 _shouldTakeInput = false;
                 _firsInput = false;
+
+                // OH NO !!
+                PlayerObject.GetComponent<MeshRenderer>().enabled = false;
+                PlayerObject.GetComponent<CubeExplosion>().Explode(Vector3.back);
+                PlayerObject.GetComponent<CustomCubeTrail>().StopTrail();
                 break;
             }
             case GameState.win:{
@@ -93,7 +98,7 @@ public class PlayerController : Controller
     }
 
     private void PlayerDeath(){
-        Debug.Log("Did you ever hear the tragedy of Darth Plagueis the Wise?");
+        //Debug.Log("Did you ever hear the tragedy of Darth Plagueis the Wise?");
 
         if(PlayerDeathEvent != null){
             PlayerDeathEvent.Invoke();
