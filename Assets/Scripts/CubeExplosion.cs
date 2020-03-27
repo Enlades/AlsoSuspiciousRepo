@@ -16,6 +16,10 @@ public class CubeExplosion : MonoBehaviour
     public void Explode(Vector3 p_direction){
         for(int i = 0; i < 30; i++){
             Rigidbody temp = _pool.Get();
+
+            if(temp == null){
+                continue;
+            }
             temp.transform.position = transform.position 
                 + Vector3.right * Random.Range(-0.5f, 0.5f)
                 + Vector3.forward * Random.Range(-0.5f, 0.5f)
