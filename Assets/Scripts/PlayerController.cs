@@ -28,6 +28,9 @@ public class PlayerController : Controller
                     FirstInputEvent.Invoke();
                 }
                 _firsInput = true;
+
+                // OH NO !!
+                PlayerObject.GetComponent<CustomCubeTrail>().StartTrail();
             }
             
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -55,6 +58,11 @@ public class PlayerController : Controller
                     break;
                 }
             case GameState.gameOver:{
+                _shouldTakeInput = false;
+                _firsInput = false;
+                break;
+            }
+            case GameState.gameIsGoingToBeOver:{
                 _shouldTakeInput = false;
                 _firsInput = false;
                 break;

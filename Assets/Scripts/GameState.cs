@@ -3,6 +3,8 @@
     play,
     pause,
     stop,
+    // wow
+    gameIsGoingToBeOver,
     gameOver,
     win
 }

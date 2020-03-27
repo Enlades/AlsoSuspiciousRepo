@@ -25,6 +25,10 @@ public class CameraController : Controller
                 _shouldMove = true;
                 break;
             }
+            case GameState.gameIsGoingToBeOver:{
+                MoveSpeed /= 2f;
+                break;
+            }
             case GameState.pause:{
                 _shouldMove = false;
                 break;

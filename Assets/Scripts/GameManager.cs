@@ -6,11 +6,28 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
-    public List<Controller> Controllers;
+    public List<Controller> Controllers; 
+
+    public LevelColors LevelColors;
+
+    public Material FaceColorMat;
+    public Material OppositeColorMat;
+    public Material GroundColorMat;
 
     private void Awake(){
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = -1;
+
+        int randomColorPaletteIndex = UnityEngine.Random.Range(1, LevelColors.ColorPalettes.Length);
+        int lastRandom = PlayerPrefs.GetInt("LastRandomColorPaletteIndex", -1);
+
+        while(randomColorPaletteIndex == lastRandom){
+            randomColorPaletteIndex = UnityEngine.Random.Range(1, LevelColors.ColorPalettes.Length);
+        }
+
+        PlayerPrefs.SetInt("LastRandomColorPaletteIndex", randomColorPaletteIndex);
+
+        AssignLevelColors(randomColorPaletteIndex);
 
         foreach (Controller c in Controllers)
         {
@@ -56,7 +73,12 @@ public class GameManager : MonoBehaviour
     }
 
     private void GameOver(){
-        SetGameState(GameState.gameOver);
+        SetGameState(GameState.gameIsGoingToBeOver);
+
+        StartCoroutine(DelayedAction(1f, () =>
+        {
+            SetGameState(GameState.gameOver);
+        }));
     }
 
     private void LevelComplete(){
@@ -78,6 +100,13 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(currentLevelBuildIndex);
             }
         }));
+    }
+
+    private void AssignLevelColors(int p_index){
+        FaceColorMat.color = LevelColors.ColorPalettes[p_index].FaceColor;
+        OppositeColorMat.color = LevelColors.ColorPalettes[p_index].OppositeColor;
+        GroundColorMat.color = LevelColors.ColorPalettes[p_index].GroundColor;
+        Camera.main.backgroundColor = LevelColors.ColorPalettes[p_index].CameraBGColor;
     }
 
     private IEnumerator DelayedAction(float p_waitTime, Action p_callback){
